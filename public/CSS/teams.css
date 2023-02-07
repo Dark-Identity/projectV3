@@ -1,0 +1,87 @@
+main , body{
+    background: #cdcdcd;
+}
+header{
+  background : blue;
+  color: #ffff;
+  border : none;
+  align-items: center;
+}
+.user_info{
+  width: 93%;
+  margin : 1rem auto;
+  padding : 1rem;
+  background: #4f5357;
+  color:white;
+  box-shadow: 0 0 4px -1px grey;
+  border-radius: 0.5rem;
+}
+.user_info > div:nth-child(2){
+  display: flex;
+  justify-content: space-around;
+  margin : 1rem 0;
+}
+
+.user_info > div:nth-child(2) > div{
+  display: flex;
+  width: 48%;
+  background: #5e5e5e;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 7%), inset 0 2px 0 #fff;
+  border-radius: 0.5rem;
+  padding : 0.5rem 1rem;
+}
+.user_info > div:nth-child(2) > div > span{
+  height: 100%;
+  width: 40%;
+  display: grid;
+  place-content: center;
+  font-size: 30px;
+  color: #00ffdd;
+}
+
+.user_info > div:nth-child(2) > div > div{
+  padding : 0 0.5rem;
+}
+
+.user_info > div:nth-child(2) > div > div > p{
+  font-size: 1.2rem;
+}
+
+/* ===========team navigator ===== */
+.team_navigator{
+  width: 95%;
+  border-radius: 0.5rem;
+  margin : 1rem auto;
+  background: #dde1ec;
+  padding : 2px;
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+}
+.team_navigator_selected{
+  background: white;
+  border-radius: 0.5rem;
+}
+.team_navigator > div{
+  height: 100%;
+  width: 100%;
+  padding : 0.5rem;
+  text-align: center;
+}
+.team_info_header , .team_info_container
+.team_info_box
+{
+  width: 90%;
+  margin : 1rem auto;
+  display: grid;
+  padding : 1rem 0.5rem;
+  background :#fcfcfc;
+  border-radius: 0.6rem;
+  grid-template-columns: repeat(3, 1fr);
+  text-align: center;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 7%), inset 0 2px 0 #fff;
+}
+
+.team_info_container{
+  padding-bottom: 80px;
+  overflow: scroll;
+}

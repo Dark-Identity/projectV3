@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>Reset Password</title>
+		<link rel="stylesheet" href="../CSS/style.css">
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1, width=device-width">
+		<style type="text/css">
+			body {
+				border-radius: 200px;
+				background-size: 100%;
+			}
+
+			.appHeader {
+				background: none;
+			}
+
+			.pageTitle {
+				color: #fff;
+				font-weight: 700;
+			}
+
+			.banyue {
+				color: #333;
+				padding: 20px;
+
+				background: #1E1E27;
+				border-radius: 10px;
+			}
+
+			.sectionTitle .title h1 {
+				color: #fff;
+			}
+
+			.sectionTitle .lead {
+				color: #fff;
+
+			}
+
+			.btn-primary {
+				color: #fff;
+				background: #0CC993;
+				border: none;
+				box-shadow: 0 3px 10px rgba(0, 0, 0, 0.07), inset 0 2px 0 #fff;
+			}
+
+			.dnw {
+				background: #0CC993;
+				padding-left: 10px;
+			}
+
+			#appCapsule {
+				padding: 45px 0;
+				background: url(/static/img/card2.png) no-repeat center top;
+				max-height: 170px;
+				background-size: 100%;
+			}
+		</style>
+
+
+	</head>
+
+	<body>
+
+		<div class="appHeader">
+			<div class="left">
+				<a href="sign.html" class="icon goBack">
+					<i class="icon ion-ios-arrow-back"></i>
+				</a>
+			</div>
+			<div class="pageTitle">Reset Password</div>
+		</div>
+
+		<div id="appCapsule" class="pb-2">
+			<div class="appContent pb-0 mt-5">
+				<div class="banyue">
+					<div class="topyou">
+						<img src="/static/img/rem01.png" alt="">
+					</div>
+					<form class="form-group" method="post" id="forgot-form">
+
+						<div class="form-group">
+							<input type="number" name="mobile" class="form-control"
+								placeholder="Please input mobile phone number">
+						</div>
+						<div class="form-group">
+
+							<input type="password" name="password" class="form-control"
+								placeholder="Please input a new password">
+						</div>
+						<div class="form-group">
+
+							<input type="password" name="passwordok" class="form-control"
+								placeholder="Please enter the password again">
+						</div>
+						<div class="form-group">
+							<input type="text" name="code" class="form-control uwp" placeholder="Verification code"
+								style="width: 70%; float: left;">
+							<div class="mb-2" style="float: right; width: 26%;">
+								<input class="form-control bt dnw" type="button"  data-event="changepwd" value="Send" >
+							</div>
+						</div>
+						<div>
+							<button type="button"  data-form="forgot-form"  class="btn btn-primary btn-lg btn-block">
+								Confirm
+							</button>
+						</div>
+					</form>
+
+				</div>
+			</div>
+
+		</div>
+
+	</body>
+
+</html>

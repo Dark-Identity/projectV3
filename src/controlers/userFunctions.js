@@ -129,7 +129,7 @@ class user_functions {
     if(the_user['BANK_ADDED'] === false){
 
       let {name , ac_number , ifsc , withdraw_pass} = req.body;
-        console.log(req.body);
+
       if(!name || !ac_number || !ifsc || !withdraw_pass){
         return res.send({status : "something went wrong"});
       }else{
@@ -437,7 +437,6 @@ class user_functions {
                           $inc: {
                             REBADE : parseFloat(level2_rebade.toFixed(3)),
                             PROFIT :    parseFloat(level2_rebade.toFixed(3))
-
                           }
                         }
                       )
@@ -446,7 +445,7 @@ class user_functions {
 
                       let level3_updated =  await
                         User.findOneAndUpdate(
-                          {INV : this_user_parent} , {
+                          {INV : level2_updated['PARENT']} , {
                             $inc: {
                               REBADE : parseFloat(level3_rebade.toFixed(3)),
                               PROFIT :    parseFloat(level3_rebade.toFixed(3))

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="../CSS/similar.css">
+    <link rel="stylesheet" href="../CSS/home.css">
+    <script src="../JS/home.js" defer charset="utf-8"></script>
+
+
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <link rel="icon" type = "image/x-icon" href="../photos/favicon.png">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Didact+Gothic&display=swap" rel="stylesheet">
+
+    <link
+     rel="stylesheet"
+     href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"/>
+
+    <title>HOME</title>
+  
+  </head>
+
+  <body>
+    <header>
+      <div id="company_logo">
+      </div>
+    </header>
+    <main>
+      <div class="swiper mySwiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide">
+            <img src="../PHOTOS/slider1.jpg" alt="company image">
+          </div>
+          <div class="swiper-slide">
+            <img src="../PHOTOS/slider2.jpg" alt="company associates">
+          </div>
+        </div>
+      </div>
+      <section id="navigation">
+
+        <div class="navigator">
+          <div style ="background : url(../PHOTOS/information.png)center no-repeat; background-size : contain;">
+            <!-- <ion-icon name="podium-outline"></ion-icon> -->
+          </div>
+          <h4>About</h4>
+        </div>
+        <div class="navigator">
+          <div style ="background : url(../PHOTOS/add-user.png)center no-repeat; background-size : contain;">
+            <!-- <ion-icon name="add-circle-outline"></ion-icon> -->
+          </div>
+          <h4>Invite</h4>
+        </div>
+
+        <div class="navigator">
+          <div style ="background : url(../PHOTOS/24-hours.png)center no-repeat; background-size : contain;">
+            <!-- <ion-icon name="hammer-outline"></ion-icon> -->
+          </div>
+          <h4>Services</h4>
+        </div>
+
+      </section>
+      <section id="video-section">
+        <video src="../PHOTOS/BBK.mp4" controls autoplay="true"
+         poster="../PHOTOS/company_logo.jpg">
+        </video>
+      </section>
+      <section id="about-company-section">
+        <h2>About BBK</h2>
+        <article>
+          <p>Founded by academics, our businees has always been propelled by astute, incisive thinkers. Work here, and you'll be surrounded by the brightest minds in the business. <br> Curious? That's good, because curiosity thrives here.</p>
+        </article>
+
+        <h2>A Colaborative Force</h2>
+        <article>
+          <p>We build teamwork into everything we do. That means embedding engineers with portfolio managers to develop smarter trading systems. Pairing reserchers with business developement to offer more valuble answers to clients. Bringing together analysts from all specializations to support our reserchers with meaningful data. <br><br> The work here is challenging and as thoughtful, curious problem-solvers, we challenge everting--togeather.</p>
+        </article>
+      </section>
+      <section id="news">
+
+      </section>
+      <section id="news1">
+
+      </section>
+      <section id="news2">
+
+      </section>
+      <section id="news3">
+
+      </section>
+    </main>
+    <footer>
+      <div class="footer home">
+        <a href="home.html">
+          <ion-icon name="home-outline"></ion-icon>
+        </a>
+        HOME
+      </div>
+     <div class="footer records">
+       <a href="product.html">
+        <ion-icon name="bag-add-outline"></ion-icon>
+       </a>
+       PRODUCTS
+     </div>
+     <div class="footer trades">
+       <a href="teams.html">
+          <ion-icon name="people-outline"></ion-icon>
+       </a>
+       TEAMS
+     </div>
+     <div class="footer profile">
+       <a href="profile.html">
+        <ion-icon name="person-outline"></ion-icon>
+      </a>
+      PROFILE
+      </div>
+    </footer>
+
+<!--============  creating about popup ---------------------->
+  <section class="home_popups" id="about_popup">
+    <div class="popup_header">
+      <div class="back_btn">
+        <i class="fa-solid fa-angle-left"></i>
+      </div>
+      <h3>ABOUT US</h3>
+    </div>
+
+    <div class="popup_img">
+
+    </div>
+    <article>
+    BBK Electronics Corporation is a multinational  Electronics devices based Supply Company (Government verified ) . We're the team professionals who understand what customer needs is and trying to full fill those requirements in appropriate span of time with suitable price .
+    </article>
+
+    <div class="popup_img">
+
+    </div>
+    <article>
+      <h2>We believe in</h2>
+      <p>Supply quality products in the best prices " We have a complete range of electronic products  like Mobile phones , televisions , headphones , power bank and many more products & general items as per the customer's requirement . Our Customers belongs to diverse backgrounds from many of the different countries ..</p>
+      <p>The work here is challenging. And as thoughtful, curious problem-solvers, we challenge everything—together.</p>
+    </article>
+
+    <div class="popup_img">
+
+    </div>
+
+  </section>
+
+<!--========== creating the refer friends page  -------------->
+  <section class="home_popups" id="refer_popup">
+  <div class="popup_header">
+    <div class="back_btn">
+      <i class="fa-solid fa-angle-left"></i>
+    </div>
+    <h3>Refer Friends</h3>
+  </div>
+  <div class="qr_box">
+    <div class="inv_code">
+      <h1>0000</h1>
+      <p>My invitation code</p>
+    </div>
+    <div class="qr_code" id="qrcode">
+
+    </div>
+    <div id="cpy_btn" style="padding : 0.5rem 0;background : #4e96ae; color : white;">COPY CODE</div>
+  </div>
+
+  </section>
+
+<!-- ---------------------creating sercices page--------------- -->
+
+<section class="home_popups" id="services_popup">
+  <div class="popup_header">
+    <div class="back_btn">
+      <i class="fa-solid fa-angle-left"></i>
+    </div>
+    <h3>Refer Friends</h3>
+  </div>
+  <div class="service_cards">
+     <div class="service_card_logo">
+
+     </div>
+     <h3>Whats app</h3>
+     <p>The first contact, the account manager will provide you with professional and fast service <br> First contact with account manager via WHATS APP wins 5rs.</p>
+  </div>
+  <div class="service_cards">
+     <div class="service_card_logo" id="telegram">
+
+     </div>
+     <h3>Telegrams</h3>
+     <p>If you don't have Whats app, you can contact your account manger via Telegram which will do for you First contact with account manager via Whats app win 5rs.</p>
+  </div>
+</section>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script type="text/javascript">
+      document.querySelector('#telegram').addEventListener('click' , ()=>{
+        window.location.href = 'https://t.me/dariya3321';
+      })
+    </script>
+  </body>
+</html>

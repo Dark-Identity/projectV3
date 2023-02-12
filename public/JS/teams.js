@@ -30,7 +30,6 @@ async function get_data(i){
     let parent2 = document.querySelector('#level2');
     data2 = await fetch('/members_lev_2');
     data2 = await data2.json();
-    console.log('level2' , data2);
     parent2.innerHTML = '';
 
     if(data2['status'] === 0){
@@ -38,15 +37,14 @@ async function get_data(i){
       return;
     }
 
-    data2.forEach((item, i) => {
+    data2[0].forEach((item, i) => {
        let child = document.createElement('div');
        child.classList.add('team_info_box');
-       console.log(item);
-       if(item.length > 0){
+       if(Object.keys(item).length > 0){
 
-       if(item[0]['USER'] !== undefined || item[0]['USER']){
-         let name = item[0]['USER'].toString().slice(0,4);
-         child.innerHTML = `<h4>${name}######</h4> <h4>${item[0]["MEMBERS"]}</h4> <h4>${item[0]['DEPOSIT']}</h4>`
+       if(item['USER'] !== undefined || item['USER']){
+         let name = item['USER'].toString().slice(0,4);
+         child.innerHTML = `<h4>${name}######</h4> <h4>${item["MEMBERS"]}</h4> <h4>${item['DEPOSIT']}</h4>`
          parent2.appendChild(child);
        }
      }
@@ -57,7 +55,7 @@ async function get_data(i){
     let parent3 = document.querySelector('#level3');
     data3 = await fetch('/members_lev_3');
     data3 = await data3.json();
-    console.log('level3' , data3);
+
     parent3.innerHTML = '';
 
     if(data3['status'] === 0){
@@ -65,14 +63,14 @@ async function get_data(i){
       return;
     }
 
-    data3.forEach((item, i) => {
+    data3[0].forEach((item, i) => {
        let child = document.createElement('div');
        child.classList.add('team_info_box');
-       if(item.length > 0){
+       if(Object.keys(item).length > 0){
 
-       if(item[0]['USER'] !== undefined || item[0]['USER']){
-         let name = item[0]['USER'].toString().slice(0,4);
-         child.innerHTML = `<h4>${name}######</h4> <h4>${item[0]["MEMBERS"]}</h4> <h4>${item[0]['DEPOSIT']}</h4>`
+       if(item['USER'] !== undefined || item['USER']){
+         let name = item['USER'].toString().slice(0,4);
+         child.innerHTML = `<h4>${name}######</h4> <h4>${item["MEMBERS"]}</h4> <h4>${item['DEPOSIT']}</h4>`
          parent3.appendChild(child);
        }
      }

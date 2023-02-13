@@ -37,20 +37,32 @@ async function get_data(i){
       return;
     }
 
-    data2[0].forEach((item, i) => {
-       let child = document.createElement('div');
-       child.classList.add('team_info_box');
-       if(Object.keys(item).length > 0){
+    if(data2 !== undefined){
 
-       if(item['USER'] !== undefined || item['USER']){
-         let name = item['USER'].toString().slice(0,4);
-         child.innerHTML = `<h4>${name}######</h4> <h4>${item["MEMBERS"]}</h4> <h4>${item['DEPOSIT']}</h4>`
-         parent2.appendChild(child);
-       }
-     }
+      for(let test of data2){
+        if(test.length > 0){
+          for(let item of test){
 
-    });
+            let child = document.createElement('div');
+            child.classList.add('team_info_box');
+            if(Object.keys(item).length > 0){
+
+            if(item['USER'] !== undefined || item['USER']){
+              let name = item['USER'].toString().slice(0,4);
+              child.innerHTML = `<h4>${name}######</h4> <h4>${item["MEMBERS"]}</h4> <h4>${item['DEPOSIT']}</h4>`
+              parent2.appendChild(child);
+            }
+          }
+
+          }
+        }
+      }
+
+      
+    }
+
   }else if(i == 2){
+
     let data3;
     let parent3 = document.querySelector('#level3');
     data3 = await fetch('/members_lev_3');
@@ -63,18 +75,27 @@ async function get_data(i){
       return;
     }
 
-    data3[0].forEach((item, i) => {
-       let child = document.createElement('div');
-       child.classList.add('team_info_box');
-       if(Object.keys(item).length > 0){
+    if(data3 !== undefined && data3.length > 0){
+      for(let test of data3){
+        if(test.length > 0){
+          for(let item of test){
 
-       if(item['USER'] !== undefined || item['USER']){
-         let name = item['USER'].toString().slice(0,4);
-         child.innerHTML = `<h4>${name}######</h4> <h4>${item["MEMBERS"]}</h4> <h4>${item['DEPOSIT']}</h4>`
-         parent3.appendChild(child);
-       }
-     }
-    });
+            let child = document.createElement('div');
+            child.classList.add('team_info_box');
+            if(Object.keys(item).length > 0){
+
+            if(item['USER'] !== undefined || item['USER']){
+              let name = item['USER'].toString().slice(0,4);
+              child.innerHTML = `<h4>${name}######</h4> <h4>${item["MEMBERS"]}</h4> <h4>${item['DEPOSIT']}</h4>`
+              parent3.appendChild(child);
+            }
+          }
+
+          }
+        }
+      }
+    }
+
   }
 
 }

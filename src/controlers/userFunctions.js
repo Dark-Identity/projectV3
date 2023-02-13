@@ -477,7 +477,7 @@ class user_functions {
             income : item_purchased['daily_income']
           }
           let x = await Income_history.create(income_data);
-          return res.send({status : 'REDEAMED'})
+          return res.send({status : 'REDEEMED'})
         }
 
       }else{

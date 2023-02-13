@@ -94,6 +94,7 @@ header{
   position: absolute;
   left : -100vw;
   top : 0;
+  padding-bottom: 80px;
 }
 #level1{
   left : 0;

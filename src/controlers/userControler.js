@@ -134,17 +134,21 @@ class user_data {
     };
 
     let level3_members = [];
+  
+    if(data !== undefined){
 
-    if(data[0].length > 0){
+      for(let test of data){
+        if(test.length > 0){
+          for(let item of test){
+            if(item !== undefined && item['INV']){
+              let level3_user = await User.find({PARENT : parseInt(item['INV'])});
+              level3_members.push(level3_user);
+            }
+            }
+          }
 
-      for(let i = 0 ; i<data.length; i++){
-        if(data[i][0] !== undefined && data[i][0]['INV']){
-          let level3_user = await User.find({PARENT : parseInt(data[i][0]['INV'])});
-          level3_members.push(level3_user);
+          }
         }
-
-      }
-    }
 
     return res.send(level3_members);
   }

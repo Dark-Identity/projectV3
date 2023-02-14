@@ -437,12 +437,12 @@
         return;
       }
       document.querySelector('#M_name').innerText = data['USER'];
-      document.querySelector('#M_income').innerText = data['PROFIT'];
-      document.querySelector('#M_income2').innerText = data['PROFIT'];
-      document.querySelector('#M_recharge').innerText = data['DEPOSIT'];
-      document.querySelector('#M_assets').innerText = data['BALANCE'];
+      document.querySelector('#M_income').innerText = data['PROFIT'].toFixed(2);
+      document.querySelector('#M_income2').innerText = data['PROFIT'].toFixed(2);
+      document.querySelector('#M_recharge').innerText = data['DEPOSIT'].toFixed(2);
+      document.querySelector('#M_assets').innerText = data['BALANCE'].toFixed(2);
       document.querySelector('#M_withdraw').innerText = data['WITHDRAWAL_AMM'];
-      document.querySelector('#M_team_income').innerText = data['REBADE'];
+      document.querySelector('#M_team_income').innerText = data['REBADE'].toFixed(2);
     })();
 
     document.querySelector('#logout').addEventListener('click' , async()=>{

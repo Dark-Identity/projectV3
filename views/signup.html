@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>Sign up</title>
+		<link rel="stylesheet" href="../CSS/style.css">
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1, width=device-width">
+		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+		<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+		  <link rel="icon" type = "image/x-icon" href="../PHOTOS/favicon.png">
+		<link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Didact+Gothic&display=swap" rel="stylesheet">
+
+		<style type="text/css">
+
+			body {
+				border-radius: 200px;
+			  background : linear-gradient(45deg, #c2c2c2 , #a2d2ff);
+				background-size: 100%;
+			}
+
+			.appHeader {
+				background: none;
+			}
+
+			.pageTitle {
+				color: #fff;
+				font-weight: 700;
+			}
+
+			.banyue {
+				color: #333;
+				padding: 20px;
+				background: linear-gradient(220deg, #939393 , #4fa5f5);
+				border-radius: 10px;
+				box-shadow: 0 0 10px -5px grey;
+			}
+      .form-control{
+				background: #c2c2c2;
+				border : none;
+				color : black;
+			}
+			.form-control:focus{
+				background : #f2f2f2;
+				border : 1px solid;
+				color : black;
+			}
+			.sectionTitle .title h1 {
+				color: #fff;
+			}
+
+			.sectionTitle .lead {
+				color: #fff;
+
+			}
+
+			.btn-primary {
+				color: #fff;
+				background: #0CC993;
+				border: none;
+				box-shadow: 0 3px 10px rgba(0, 0, 0, 0.07), inset 0 2px 0 #fff;
+			}
+
+			.dnw {
+				background: #0CC993;
+				padding-left: 10px;
+			}
+
+			#appCapsule {
+				padding: 45px 0;
+				/* background: url(/static/img/card2.png) no-repeat center top; */
+				max-height: 170px;
+				background-size: 100%;
+			}
+			#otp_box{
+				display: grid;
+				grid-template-columns: 1.5fr 1fr;
+				grid-column-gap: 0.25rem;
+			}
+			#otp_box > div{
+				background: #adc13e;;
+				color : white;
+				border-radius: 100vw;
+				text-align: center;
+				padding : 1rem;
+			}
+		</style>
+
+	</head>
+
+	<body>
+		<div class="appHeader">
+			<div class="left">
+				<a href="sign.html" class="icon goBack">
+					<i class="icon ion-ios-arrow-back"></i>
+				</a>
+			</div>
+			<div class="pageTitle">Sign up</div>
+		</div>
+		<!-- searchBox -->
+
+		<div class="searchBox">
+
+			<form>
+				<span class="inputIcon">
+					<i class="icon ion-ios-search"></i>
+				</span>
+				<input type="text" class="form-control" id="searchInput" placeholder="Search...">
+				<a href="javascript:;" class="toggleSearchbox closeButton">
+					<ion-icon name="person-outline"></ion-icon>
+				</a>
+			</form>
+		</div>
+		<div id="appCapsule" class="pb-2">
+			<div class="appContent pb-0 mt-5">
+				<div class="banyue">
+					<div class="topyou" style="text-align : center; color : white ; border: 1px solid; border-radius : 100%; height : 70px ; width : 70px; margin-left : 50%; transform : translateX(-50%); font-size : 50px">
+						<ion-icon name="person-outline"></ion-icon>
+					</div>
+					<form class="form-group" method="post" action="/signup" id="signup-form">
+
+						<div class="form-group">
+							<input type="number" name="mobile" class="form-control"
+								placeholder="Please enter mobile nnumber">
+						</div>
+						<div class="form-group">
+							<input type="password" name="password" value="" class="form-control"
+								placeholder="Please input password">
+						</div>
+						<div class="form-group">
+							<input type="password" name="cpassword" class="form-control"
+								placeholder="please enter password again">
+						</div>
+						<div class="form-group">
+
+							<input type="text" name="invitecode" value="" class="form-control"
+								placeholder="Please enter the invitation code">
+						</div>
+
+						<div class="form-group" id="otp_box">
+
+							<input type="number" name="otp" value="" class="form-control"
+								placeholder="ENTER THE OTP">
+								<div id="send_otp">
+                  SEND OTP
+								</div>
+						</div>
+
+						<div>
+							<button style="background : #ffaf37; font-size : 15px;" type="button"  data-form="signup-form"  class="btn btn-primary btn-lg btn-block">
+								Sign up
+							</button>
+						</div>
+					</form>
+					<div class="mt-3 text-center text-white">
+						Already have an account? <a href="sign.html" style="color : #ffaf37;">Log in</a>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+  <script type="text/javascript">
+
+    async function otp(number){
+			document.querySelector('input[name = mobile]').disabled = 'true';
+      let config = {
+				method : 'POST',
+				headers : {
+					'content-type' : 'application/json'
+				},
+				body : await JSON.stringify(number)
+			}
+
+      let res = await fetch('/otp' , config);
+			res = await res.json();
+      console.log(res);
+			if(res['status'] === 1){
+				alert('OTP SENT');
+			}else{
+				alert('SOMETHING WENT WRONG');
+				// window.location.reload();
+			}
+	 }
+
+    document.querySelector('#send_otp').addEventListener('click' , ()=>{
+	    let number = document.querySelector('input[name = mobile]').value;
+
+			if(!number || number == undefined){
+				alert('wrong number');
+				return;
+			}else if(number.length === 10){
+
+				 otp({number});
+
+			}else if(number.length === 13 && number.slice(0,3) === '+91' && number.slice(0,3).length === 10){
+
+				number = number.slice(3,);
+        otp({number});
+
+			}else{
+				alert('wrong number');
+				return;
+			}
+
+		});
+
+		async function send_data(data){
+
+		  const config = {
+				method : 'POST',
+				headers : {
+					'content-type' : 'application/json'
+				},
+				body : await JSON.stringify(data)
+			}
+
+			let res = await fetch('/signup' , config);
+      res = await res.json();
+			if(res['status'] == 1){
+				window.location.href = window.location.origin + '/sign.html';
+			}else{
+				alert('SOMETHING WENT WRONG');
+				return;
+			}
+
+		 }
+
+		document.querySelector('button').addEventListener('click' , ()=>{
+
+		  let data = document.querySelectorAll('.form-control');
+			let mobile_num = data[1].value;
+			let password = data[2].value;
+			let c_password = data[3].value;
+			let inv_code = data[4].value;
+			let otp = data[5].value;
+			// console.log(data);
+
+			if(
+				!mobile_num || mobile_num == undefined ||
+				!password  || password == undefined   ||
+				!c_password || c_password == undefined||
+				!otp || otp == undefined
+			){
+        alert('ENTER ALL THE REQUIRED VLAUES');
+				return;
+
+			}else{
+        if(c_password !== password){
+
+					alert('PASSWORD DID NOT MATCH');
+					return;
+				}else{
+          let is_invited = (inv_code == 'undefined' || !inv_code)? 0 : inv_code;
+					let data_to_send = {
+						mobile_num , password , is_invited , otp
+					}
+					send_data(data_to_send);
+				}
+
+			}
+
+		})
+
+		function getParameters() {
+		      let urlString = window.location.href;
+		      let param;
+
+		      if(urlString.split('?').length > 1){
+						param = urlString.split('?')[1];
+		      }else{
+		        return;
+		      }
+
+		       document.querySelector('input[name = invitecode]').value =  parseInt(param);
+				   document.querySelector('input[name = invitecode]').disabled = 'true';
+
+		  }
+		  getParameters();
+
+  </script>
+
+	</body>
+
+</html>

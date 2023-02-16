@@ -1,0 +1,104 @@
+@import url("https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css");
+@import url("https://fonts.googleapis.com/css?family=Heebo:100,300,400,500,700,800,900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Explora&family=Heebo:wght@100;200;300;400;500;600;700;800&family=Unbounded:wght@400;500&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    scrollbar-color : transparent transparent;
+    scrollbar-width: 0px;
+    /* font-family: 'Dancing Script', cursive; */
+    font-family: 'Heebo', sans-serif;
+}
+
+:root {
+    --grey: #4e596e;
+    --grey_dark: #242a32;
+    --blue: #5a8ed3;
+    --background: #f1f1f6;
+    --white: #ffffff;
+  }
+
+/* -----------------creating the header ------------------- */
+
+header{
+  height: 60px;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  background : #fff;
+  border : 1px solid;
+}
+header > #company_logo{
+  height: 100%;
+  width: 10rem;
+}
+
+/* ---------------header creation ends here----------------- */
+
+
+/* ----------------- creating the footer ------------------ */
+
+footer {
+  height : 60px;
+  position: fixed;
+  bottom: 0;
+  left : 0;
+  width: 100vw;
+  display: grid;
+  grid-template-columns: repeat(4 , 1fr);
+}
+footer{
+  border-top-right-radius: 2rem;
+  border-top-left-radius: 2rem;
+  box-shadow: 0 0 10px -3px var(--grey);
+  z-index: 5;
+}
+footer>div{
+  display: grid;
+  text-align: center;
+  color : white;
+  background : var(--grey_dark);
+}
+
+footer > .home {
+  border-top-left-radius: 1rem;
+}
+footer > .profile{
+  border-top-right-radius: 1rem;
+}
+footer > .footer > a{
+  height: 100%;
+  width: 100%;
+  display: grid;
+  place-content: center;
+  place-items: center;
+}
+
+.footer > a > ion-icon ,.footer > a > i {
+  font-size: 2rem;
+  color : white;
+}
+
+
+/* ---------------------footer ends here --------------------------- */
+
+/* --------------media querrys----------------- */
+
+@media screen and (min-width : 490px){
+ /* pc media querry */
+  html{
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width : 490px ){
+/* mobile media querry */
+
+  html{
+    font-size : 14px;
+  }
+
+}
+/* -------------------media querys ends here-------------------- */

@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>Reset Password</title>
+		<link rel="stylesheet" href="../CSS/style.css">
+		  <link rel="icon" type = "image/x-icon" href="../PHOTOS/favicon.png">
+		<meta name="viewport" content="initial-scale=1, maximum-scale=1, width=device-width">
+		<style type="text/css">
+
+			body {
+				border-radius: 200px;
+				background-size: 100%;
+			}
+
+			.appHeader {
+				background: none;
+			}
+
+			.pageTitle {
+				color: #fff;
+				font-weight: 700;
+			}
+
+			.banyue {
+				color: #333;
+				padding: 20px;
+        box-shadow: 0 0 10px -5px grey;
+				background: linear-gradient(40deg, #939393 , #4fa5f5);
+				border-radius: 10px;
+			}
+
+			.sectionTitle .title h1 {
+				color: #fff;
+			}
+
+			.sectionTitle .lead {
+				color: #fff;
+
+			}
+
+			.btn-primary {
+				color: #fff;
+				border: none;
+				box-shadow: 0 3px 10px rgba(0, 0, 0, 0.07), inset 0 2px 0 #fff;
+			}
+
+			.dnw {
+				background: #0CC993;
+				padding-left: 10px;
+			}
+
+			#appCapsule {
+				padding: 45px 0;
+				/* background: url(/static/img/card2.png) no-repeat center top; */
+				max-height: 170px;
+				background-size: 100%;
+			}
+		</style>
+		<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+		<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+			<link rel="icon" type = "image/x-icon" href="../PHOTOS/favicon.png">
+		<link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Didact+Gothic&display=swap" rel="stylesheet">
+
+	</head>
+
+	<body>
+
+		<div class="appHeader">
+			<div class="left">
+				<a href="sign.html" class="icon goBack">
+					<i class="icon ion-ios-arrow-back"></i>
+				</a>
+			</div>
+			<div class="pageTitle">Reset Password</div>
+		</div>
+
+		<div id="appCapsule" class="pb-2">
+			<div class="appContent pb-0 mt-5">
+				<div class="banyue">
+					<div class="topyou" style="text-align : center; color : white ; border: 1px solid; border-radius : 100%; height : 70px ; width : 70px; margin-left : 50%; transform : translateX(-50%); font-size : 50px">
+						<ion-icon name="person-outline"></ion-icon>
+					</div>
+					<form class="form-group" method="post" id="forgot-form">
+
+						<div class="form-group">
+							<input type="number" name="mobile" class="form-control"
+								placeholder="Please input mobile phone number">
+						</div>
+						<div class="form-group">
+
+							<input type="password" name="password" class="form-control"
+								placeholder="Please input a new password">
+						</div>
+						<div class="form-group">
+
+							<input type="password" name="passwordok" class="form-control"
+								placeholder="Please enter the password again">
+						</div>
+						<div class="form-group">
+							<input type="text" name="code" class="form-control uwp" placeholder="Verification code"
+								style="width: 70%; float: left;">
+							<div id="send_otp"class="mb-2" style=" color : white;float: right; width: 26%;">
+								<input class="form-control bt dnw" type="button"  data-event="changepwd" value="Send" >
+							</div>
+						</div>
+						<div>
+							<button type="button"  data-form="forgot-form"  class="btn btn-primary btn-lg btn-block">
+								Confirm
+							</button>
+						</div>
+					</form>
+
+				</div>
+			</div>
+
+		</div>
+
+  <script type="text/javascript">
+
+	async function otp(number){
+		let config = {
+			method : 'POST',
+			headers : {
+				'content-type' : 'application/json'
+			},
+			body : await JSON.stringify(number)
+		}
+
+		let res = await fetch('/otp' , config);
+		res = await res.json();
+
+		if(res['status'] === 1){
+			alert('OTP SENT');
+		}else{
+			alert('SOMETHING WENT WRONG');
+			// window.location.reload();
+		}
+  }
+
+	document.querySelector('#send_otp').addEventListener('click' , ()=>{
+		let number = document.querySelector('input[name = mobile]').value;
+
+		if(!number || number == undefined){
+			alert('wrong number');
+			return;
+		}else if(number.length === 10){
+
+			 otp({number});
+
+		}else if(number.length === 13 && number.slice(0,3) === '+91' && number.slice(0,3).length === 10){
+
+			number = number.slice(3,);
+			otp({number});
+
+		}else{
+			alert('wrong number');
+			return;
+		}
+
+	});
+
+	async function send_data(data){
+
+		const config = {
+			method : 'POST',
+			headers : {
+				'content-type' : 'application/json'
+			},
+			body : await JSON.stringify(data)
+		}
+
+		let res = await fetch('/change_password_otp' , config);
+		res = await res.json();
+		if(res['status'] == 1){
+			window.location.href = window.location.origin + '/sign.html';
+		}else if(res['status'] == 2){
+			alert('INCORRECT OTP');
+			return;
+		}else{
+			alert('SOMETHING WENT WRONG');
+			return;
+		}
+
+	 }
+
+	document.querySelector('button').addEventListener('click' , ()=>{
+
+		let data = document.querySelectorAll('.form-control');
+		let password = data[1].value;
+		let c_password = data[2].value;
+		let otp = data[3].value;
+		// console.log(data);
+
+		if(
+			!password  || password == undefined   ||
+			!c_password || c_password == undefined||
+			!otp || otp == undefined
+		){
+			alert('ENTER ALL THE REQUIRED VLAUES');
+			return;
+
+		}else{
+			if(c_password !== password){
+				alert('PASSWORD DID NOT MATCH');
+				return;
+			}else{
+				let data_to_send = {
+				  password , otp
+				}
+				send_data(data_to_send);
+			}
+
+		}
+
+	})
+  </script>
+
+	</body>
+
+</html>

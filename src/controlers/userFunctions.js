@@ -590,8 +590,9 @@ class user_functions {
          let deduct_amount = parseFloat(data['Ammount'] - (2*data['Ammount']))
          // deduct the amount from the user and increment the withdrawal amount and withdrawal count;
          await User.findOneAndUpdate({_id : USER_ID} , {
-           $inc : {PROFIT : deduct_amount ,
-                   withdrawalAmmount : parseFloat(data['Ammount']),
+           $inc : {
+                   PROFIT : deduct_amount ,          
+                   WITHDRAWAL_AMM: parseFloat(data['Ammount']),
                   } ,
            WITHDRAWAL_DATE : today.getDate()
          });
@@ -721,7 +722,9 @@ class user_functions {
     let body = req.body;
 
     if(!body.inv || body.inv === undefined || !body.amount || body.amount === undefined){
+      
       return res.send({status : 'SOMETHING WENT WRONG'});
+
     }else{
 
       let inv = parseInt(body.inv);
@@ -746,15 +749,21 @@ class user_functions {
       let parent_data = await User.findOne({INV : inv});
 
       if(parent_data === undefined){
+      
         return res.send({status : "SOMETHIGN WENT WRONG"});
+      
       }else if(parent_data['PARENT'] == 0){
-         await User.findOneAndUpdate({INV : inv} , { $inc : {PROFIT : update_user , BALANCE : update_user} });
+         
+         await User.findOneAndUpdate({INV : inv} , { $inc : {PROFIT : update_user} });
          return res.send({status : `user -> ${update_user}`});
-      }else{
 
-        await User.findOneAndUpdate({INV : parseInt(parent_data['PARENT']) } , { $inc : {PROFIT : update_parent , BALANCE : update_parent} });
-        await User.findOneAndUpdate({INV : inv} , { $inc : {PROFIT : update_user , REBADE : update_user} });
+      }else{
+        
+        await User.findOneAndUpdate({INV : parseInt(parent_data['PARENT']) } , { $inc : {PROFIT : update_parent} });
+        await User.findOneAndUpdate({INV : inv} , { $inc : {PROFIT : update_user} });
+       
         return res.send({status : `parent -> ${update_parent} \n user -> ${update_user}`})
+      
       }
 
     }

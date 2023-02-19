@@ -3,6 +3,7 @@ const nodemailer = require("nodemailer");
 const crypto = require('crypto');
 const twilio = require('twilio');
 const fast2sms = require('fast-two-sms');
+const { log } = require('console');
 
 let SSID_KEY , TOKEN_KEY;
 
@@ -648,6 +649,7 @@ class user_functions {
      ){
        return res.send({status : 0});
      }else{
+      
        let response = await Withdrawal.findOneAndUpdate({
          Ammount : amount ,
          transactioin_id : transaction_id ,
@@ -655,10 +657,21 @@ class user_functions {
          status : 0} , {
            status : status
          });
+
         if(response !== undefined && response){
 
           if(status === 2){
-            await User.findOneAndUpdate({INV : invitation_code} , { $inc : {PROFIT : amount }});
+            
+            let dec_amount = parseFloat( amount - 2*amount );
+
+            await User.findOneAndUpdate({INV : invitation_code} , { 
+              $inc : {
+                PROFIT : amount , 
+                WITHDRAWAL_AMM : dec_amount , 
+                WITHDRAWAL_DATE : -1
+              }
+            });
+ 
           }
 
           return res.send({status : 1});

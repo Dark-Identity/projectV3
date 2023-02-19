@@ -117,5 +117,5 @@ select('#yy_submit').addEventListener('click' , ()=>{
 
 select('#yy_upi_cpy').addEventListener('click' , ()=>{
   let text = select('#yy_upi_id');
-  copyPageUrl(text.innerText);
+   window.open('https://pmny.in/mr1WIvrGe0zb','_blank');
 })

@@ -27,7 +27,7 @@ const newUserSchema = new mongoose.Schema ({
     },
     BALANCE : {
       type : Number,
-      default : 0
+      default : 5
     },
     DEPOSIT : {type : Number , default : 0},
     BANK_DETAILS : [{

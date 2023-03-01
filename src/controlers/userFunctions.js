@@ -503,10 +503,6 @@ class user_functions {
       timeZone: 'Asia/Calcutta'
       });
 
-      const nDate = new Date().toLocaleString('en-US', {
-        timeZone: 'Asia/Calcutta'
-        });
-
       let today = new Date(nDate);
 
       let date = `${today.getDate()}/${today.getMonth()+1}/${today.getFullYear()}`;

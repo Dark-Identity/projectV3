@@ -503,6 +503,10 @@ class user_functions {
       timeZone: 'Asia/Calcutta'
       });
 
+      const nDate = new Date().toLocaleString('en-US', {
+        timeZone: 'Asia/Calcutta'
+        });
+
       let today = new Date(nDate);
 
       let date = `${today.getDate()}/${today.getMonth()+1}/${today.getFullYear()}`;
@@ -544,15 +548,23 @@ class user_functions {
      let INVITATION_CODE = parseInt(req.session.inv);
      let USER_ID = req.session.user_id;
      let {withdrawal_code , amount} = req.body;
-     let today = new Date();
+     const nDate = new Date().toLocaleString('en-US', {
+        timeZone: 'Asia/Calcutta'
+        });
+
+     let today = new Date(nDate);
      let transactioin_id = crypto.randomBytes(16).toString("hex");
      transactioin_id = transactioin_id.slice(0 , 6);
      let U_details = await User.findOne({INV : INVITATION_CODE} , {WITHDRAWAL_CODE : 1 , WITHDRAWAL_DATE : 1 , BANK_DETAILS : 1 , PROFIT : 1});
 
      let w_details = U_details['WITHDRAWAL_CODE'];
      let last_withdrawal = parseInt(U_details['WITHDRAWAL_DATE']);
-
-
+    
+     let number_withdrawals = await Withdrawal.find({status : 0}).count();
+     if(number_withdrawals > 0){ 
+        return res.send({status : "YOU ALREADY HAVE A PENDING WITHDRAWAL"});
+     }
+    
      if(w_details == 0 || withdrawal_code !== w_details){
        return res.send({status : 'enter a VALID withdrawal code first'});//enter withdrawal code first
      }

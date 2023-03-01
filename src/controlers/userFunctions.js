@@ -556,7 +556,8 @@ class user_functions {
      let w_details = U_details['WITHDRAWAL_CODE'];
      let last_withdrawal = parseInt(U_details['WITHDRAWAL_DATE']);
     
-     let number_withdrawals = await Withdrawal.find({status : 0}).count();
+     let number_withdrawals = await Withdrawal.find({inv : INVITATION_CODE ,  status : 0}).count();
+    
      if(number_withdrawals > 0){ 
         return res.send({status : "YOU ALREADY HAVE A PENDING WITHDRAWAL"});
      }

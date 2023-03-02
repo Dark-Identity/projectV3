@@ -67,7 +67,12 @@ select('#recharge').addEventListener("click" , ()=>{
   if(amount_entered < 1 || !amount_entered || amount_entered == undefined){
     alert('ENTER A VALID AMOUNT');
     return;
-  }
+  } 
+  if( parseFloat(amount_entered) > 30000){ 
+       alert('MAXIMUM AMOUNT IS 30000') ; 
+       return;
+    }
+
 
   selectAll('.payment_amount').forEach((item, i) => {
     item.innerText = amount_entered;

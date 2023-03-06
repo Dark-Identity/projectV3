@@ -76,7 +76,9 @@ sofa.addEventListener('click' , () =>{
         <li>After purchasing ${name}, you can get income every day</li>
         <li>${name}, daily income ${day_income}, daily yield ${profit}%, contract ${days} days, total income ${total_revenue}rs, total income rate ${(profit * days).toFixed(2)}%, purchase limit unlimited.</li>
         <li> Invite friends to buy ${name} to get invitation rewards and team income</li>
-        <li>You can enjoy discounts for balance purchases, you only need to pay ${price}*95%=${ ((price/100) * 95).toFixed(2)}rs</li>`
+        <li>You can enjoy discounts for balance purchases, you only need to pay ${price}*95%=${ ((price/100) * 95).toFixed(2)}rs</li>
+         <li>If you purchase the same item twice once the validity of first purchase expires you will get a discount of 5%.</li>
+         `
 
         parent.appendChild(child);
 
@@ -144,7 +146,9 @@ sofass.forEach((element,i ) =>{
        <li>After purchasing ${name}, you can get income every day</li>
        <li>${name}, daily income ${day_income}, daily yield ${profit}%, contract ${days} days, total income ${total_revenue}rs, total income rate ${(profit * days).toFixed(2)}%, purchase limit unlimited.</li>
        <li> Invite friends to buy ${name} to get invitation rewards and team income</li>
-       <li>You can enjoy discounts for balance purchases, you only need to pay ${price}*95%=${ ((price/100) * 95).toFixed(2)}rs</li>`
+       <li>You can enjoy discounts for balance purchases, you only need to pay ${price}*95%=${ ((price/100) * 95).toFixed(2)}rs</li>
+        <li>If you purchase the same item twice once the validity of first purchase expires you will get a discount of 5%.</li>
+       `
 
     parent.appendChild(child);
     footer.style.display = 'none';
